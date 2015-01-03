@@ -56,7 +56,7 @@ $result = "Counted π: $pi based on ".throws_count." throws.";
   <link media="all" type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <meta charset="UTF-8">
   <title>Calculate π by throwing hotdogs</title>
-</head>src="<?php echo $image->output() ?>"
+</head>
 <body>
   <div class="container">
     <div class="row clearfix">
