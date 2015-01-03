@@ -11,7 +11,7 @@ include 'ResultImage.php';
 
 function get_or_default($key, $default)
 {
-  if(isset($_GET[$key]))
+  if(isset($_GET[$key]) && $_GET[$key])
   {
     define($key, $_GET[$key]);
   }
