@@ -6,6 +6,7 @@
 There are few constants in main.php affecting calculations and output image.
 
 Example output image:
+
 ![Result](/result.jpg?raw=true)
 
 Example output:

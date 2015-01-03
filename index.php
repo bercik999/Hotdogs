@@ -9,16 +9,28 @@ include 'FrozenHotdog.php';
 include 'RandomGenerator.php';
 include 'ResultImage.php';
 
+function get_or_default($key, $default)
+{
+  if(isset($_GET[$key]))
+  {
+    define($key, $_GET[$key]);
+  }
+  else
+  {
+    define($key, $default);
+  }
+}
+
 //How many hotdogs we will throw
-define('throws_count', 1000);
+get_or_default('throws_count', 1000);
 //How big result image will be
-define('img_scale', 2);
+get_or_default('img_scale', 2);
 //how wide image will be compared to single hotdog
-define('img_width_multiplier', 10);
+get_or_default('img_width_multiplier', 10);
 //how many steps will be in final image
-define('lines_count', 30);
+get_or_default('lines_count', 30);
 //use random numbers from random.org - requires cUrl
-define('use_random_org', false);
+get_or_default('use_random_org', false);
 
 
 $image = new ResultImage(img_scale);
@@ -35,3 +47,4 @@ for($i=1;$i<=throws_count; $i++)
 }
 $pi = (2/$crossed)*$i;
 echo "Counted π: $pi based on ".throws_count." throws.";
+
