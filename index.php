@@ -96,7 +96,7 @@ $result = "Counted π: $pi based on ".throws_count." throws.";
           </div>
         </form>
         <p><?php echo $result ?></p>
-        <img class="img-responsive" src="<?php echo $image->output() ?>">
+        <img class="img-responsive" src="data:image/x-icon;base64,<?php echo base64_encode($image->output()); ?>">
       </div>
     </div>
   </div>

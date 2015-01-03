@@ -61,7 +61,7 @@ class ResultImage {
   {
     ob_start();
     imagejpeg($this->img);
-    return gzdeflate(ob_get_clean());
+    return ob_get_clean();
   }
 
 }
