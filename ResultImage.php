@@ -27,6 +27,7 @@ class ResultImage {
     $this->black = imagecolorallocate($this->img, 0, 0, 0);
     $this->blue = imagecolorallocate($this->img, 0, 0, 255);
     $this->white = imagecolorallocate($this->img, 255, 255, 255);
+    $this->red = imagecolorallocate($this->img, 255, 0, 0);
 
     imagefilledrectangle($this->img,0,0,$this->width,$this->height,$this->white);
     for($x=1;$x*FrozenHotdog::length*$scale < $this->height;$x++)
@@ -41,7 +42,14 @@ class ResultImage {
     $start = $hotdog->getStart();
     $end = $hotdog->getEnd();
     $scale = $this->scale;
-    imageline($this->img,$start['x']*$scale,$start['y']*$scale,$end['x']*$scale,$end['y']*$scale,$this->blue);
+    if($hotdog->isCrossed()){
+      $color = $this->red;
+    }
+    else
+    {
+      $color = $this->blue;
+    }
+    imageline($this->img,$start['x']*$scale,$start['y']*$scale,$end['x']*$scale,$end['y']*$scale,$color);
   }
 
   public function save($filename = 'result')
@@ -49,10 +57,9 @@ class ResultImage {
     imagejpeg($this->img,"$filename.jpg",100);
   }
 
-  function __destruct()
+  public function output()
   {
-    $this->save();
+    imagejpeg($this->img);
   }
-
 
 }

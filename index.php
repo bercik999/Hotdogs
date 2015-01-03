@@ -22,7 +22,7 @@ function get_or_default($key, $default)
 }
 
 //How many hotdogs we will throw
-get_or_default('throws_count', 1000);
+get_or_default('throws_count', 100);
 //How big result image will be
 get_or_default('img_scale', 2);
 //how wide image will be compared to single hotdog
@@ -46,5 +46,59 @@ for($i=1;$i<=throws_count; $i++)
   }
 }
 $pi = (2/$crossed)*$i;
-echo "Counted π: $pi based on ".throws_count." throws.";
+$result = "Counted π: $pi based on ".throws_count." throws.";
 
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <link media="all" type="text/css" rel="stylesheet" href="http://176.58.111.46/packages/bootstrap/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>Calculate π by throwing hotdogs</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <form method="GET" action="index.php" accept-charset="UTF-8" class="form-horizontal" id="comment-form">
+          <div class="form-group">
+            <label for="throws_count" class="col-sm-2 control-label">Throws count</label>
+            <div class="col-sm-10">
+              <input class="form-control" name="throws_count" type="text" id="throws_count">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="img_scale" class="col-sm-2 control-label">Image scale</label>
+            <div class="col-sm-10">
+              <input class="form-control" name="img_scale" type="text" id="img_scale">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="img_width_multiplier" class="col-sm-2 control-label">Image width multiplier</label>
+            <div class="col-sm-10">
+              <input class="form-control" name="img_width_multiplier" type="text" id="img_width_multiplier">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lines_count" class="col-sm-2 control-label">Lines count</label>
+            <div class="col-sm-10">
+              <input class="form-control" name="lines_count" type="text" id="lines_count">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input class="btn btn-default" type="submit" value="Throw!">
+            </div>
+          </div>
+        </form>
+        <p><?php echo $result ?></p>
+        <?php echo $image->output() ?>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
