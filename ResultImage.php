@@ -59,7 +59,9 @@ class ResultImage {
 
   public function output()
   {
+    ob_start();
     imagejpeg($this->img);
+    return ob_get_clean();
   }
 
 }
